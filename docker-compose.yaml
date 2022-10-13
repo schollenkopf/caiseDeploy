@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: vue-frontend
+    build: vue-client/
+    ports:
+      - 8080:8080
+
+  backend:
+    container_name: flask-backend
+    build: flask-server/
+    ports:
+      - 5000:5000
+    networks:
+      - default
+    environment: 
+      - FLASK_APP=server.py
